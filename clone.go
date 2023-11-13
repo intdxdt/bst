@@ -2,8 +2,7 @@ package bst
 
 import "github.com/intdxdt/stack"
 
-
-//Clones BST.
+// Clones BST.
 func clone(tree *BST) *BST {
 	if tree == nil {
 		return tree
@@ -18,7 +17,7 @@ func clone(tree *BST) *BST {
 	other.Root = node.Clone(node.Parent)
 	_node := other.Root
 
-	var _stack = stack.NewStack()
+	var _stack = stack.NewStack[*Node]()
 	for !_stack.IsEmpty() || !IsNil(node) {
 		if !IsNil(node) {
 			//pack stack _node, node
@@ -43,15 +42,15 @@ func clone(tree *BST) *BST {
 	return other
 }
 
-//Packs two nodes onto stack.
-func pack_2_stack(s *stack.Stack, _n, n *Node) {
+// Packs two nodes onto stack.
+func pack_2_stack(s *stack.Stack[*Node], _n, n *Node) {
 	s.Push(_n)
 	s.Push(n)
 }
 
-//Unpacks two nodes from stack.
-func unpack_2_stack(s *stack.Stack) (*Node, *Node) {
-	n := s.Pop().(*Node)
-	_n := s.Pop().(*Node)
+// Unpacks two nodes from stack.
+func unpack_2_stack(s *stack.Stack[*Node]) (*Node, *Node) {
+	n := s.Pop()
+	_n := s.Pop()
 	return n, _n
 }

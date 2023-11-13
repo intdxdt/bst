@@ -1,6 +1,6 @@
 package bst
 
-//SearchItem - find node with given value
+// SearchItem - find node with given value
 func SearchItem(node *Node, val interface{}) *Node {
 	var found = false
 	if val == nil {
@@ -23,7 +23,7 @@ func SearchItem(node *Node, val interface{}) *Node {
 	return nil
 }
 
-//SizeOfNode - computes Size of Node
+// SizeOfNode - computes Size of Node
 func SizeOfNode(node *Node) int {
 	var n = 0
 	InOrder(node, func(o *Node) bool {
@@ -33,7 +33,7 @@ func SizeOfNode(node *Node) int {
 	return n
 }
 
-//Ptr - update parent and child bi-directional pointers
+// Ptr - update parent and child bi-directional pointers
 func Ptr(parent, child *Node, branch *Branch) {
 	if NotNil(parent) && branch != nil {
 		parent.SetNode(child, branch)
@@ -44,22 +44,22 @@ func Ptr(parent, child *Node, branch *Branch) {
 	}
 }
 
-//Not boolean
+// Not boolean
 func Not(b bool) bool {
 	return !b
 }
 
-//IsNil - checks if node is nil
+// IsNil - checks if node is nil
 func IsNil(n *Node) bool {
 	return n == nil
 }
 
-//NotNil - checks if not is not nil
+// NotNil - checks if not is not nil
 func NotNil(n *Node) bool {
 	return n != nil
 }
 
-//ShiftNode from the begining of list
+// ShiftNode from the beginning of list
 func ShiftNode(a []*Node) (*Node, []*Node) {
 	if len(a) == 0 {
 		return nil, a
@@ -69,7 +69,7 @@ func ShiftNode(a []*Node) (*Node, []*Node) {
 	return x, a[1:]
 }
 
-//PopNode pops a node from a slice of nodes.
+// PopNode pops a node from a slice of nodes.
 func PopNode(a []*Node) (*Node, []*Node) {
 	var v *Node
 	var n int
@@ -81,7 +81,7 @@ func PopNode(a []*Node) (*Node, []*Node) {
 	return v, a[:n]
 }
 
-//Next - find the next value
+// Next - find the next value
 func Next(tree *BST, val interface{}) *Node {
 	var n, p *Node
 
@@ -108,7 +108,7 @@ func Next(tree *BST, val interface{}) *Node {
 	return p
 }
 
-//Prev - find previous value
+// Prev - find previous value
 func Prev(tree *BST, val interface{}) *Node {
 	var n, p *Node
 

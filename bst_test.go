@@ -2,10 +2,10 @@ package bst
 
 import (
 	"fmt"
+	"github.com/franela/goblin"
+	"github.com/intdxdt/cmp"
 	"sort"
 	"testing"
-	"github.com/intdxdt/cmp"
-	"github.com/franela/goblin"
 )
 
 var valPrinter = func(n interface{}) string {
@@ -103,7 +103,7 @@ func TestBST(t *testing.T) {
 		g.Assert(tree.Search(nil) == nil).IsTrue()
 		g.Assert(tree.Search(1.777) == nil).IsTrue()
 
-		fmt.Println(tree.String(), "\n\n")
+		fmt.Print(tree.String(), "\n\n\n")
 
 		rm, parent = tree.Remove(0.0)
 		g.Assert(len(uniqArray) - 1).Equal(tree.size)
@@ -185,7 +185,7 @@ func TestBST(t *testing.T) {
 
 		fmt.Println(tree.Print(valPrinter))
 
-		fmt.Println("\nWorse Case -- BST as List\n")
+		fmt.Print("\nWorse Case -- BST as List\n\n")
 
 		bst = NewBST(cmp.F64)
 		bst.Insert(1.1)
@@ -202,7 +202,7 @@ func TestBST(t *testing.T) {
 		g.Assert(BranchMost(bst.Root, right).Key).Equal(2.7)
 		g.Assert(bst.Size()).Equal(7)
 
-		fmt.Println("\nTest Empty\n")
+		fmt.Print("\nTest Empty\n\n")
 		g.Assert(bst.Empty().Root == nil).IsTrue()
 		g.Assert(bst.size == 0).IsTrue()
 
@@ -224,7 +224,7 @@ func TestBST(t *testing.T) {
 		tree = NewBST(cmp.Int)
 		vals := []int{
 			66, 62, 70, 60, 50, 61, 64, 63,
-			65, 68, 67, 69, 89, 71, 72, 101,}
+			65, 68, 67, 69, 89, 71, 72, 101}
 		for _, f := range vals {
 			tree.Insert(f)
 		}

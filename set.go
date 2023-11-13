@@ -5,17 +5,17 @@ import (
 )
 
 const (
-	setUnion     = iota
+	setUnion = iota
 	setIntersect
 	setDiff
 	setSymDiff
 )
 
-//Performs set operation given two trees.
+// Performs set operation given two trees.
 func set_operation(n1, n2 *Node, mode int) []interface{} {
 	vals := make([]interface{}, 0)
 	// Create two stacks for two inorder traversals
-	var s1, s2, empty = stack.NewStack(), stack.NewStack(), stack.NewStack()
+	var s1, s2, empty = stack.NewStack[*Node](), stack.NewStack[*Node](), stack.NewStack[*Node]()
 
 	var iter = func() bool {
 		return (NotNil(n1) || Not(s1.IsEmpty()) ||
@@ -46,11 +46,11 @@ func set_operation(n1, n2 *Node, mode int) []interface{} {
 			}
 
 			// Both root1 and root2 are NULL here
-			n1 = s1.Top().(*Node)
-			n2 = s2.Top().(*Node)
+			n1 = s1.Top()
+			n2 = s2.Top()
 
 			// If current keys in two trees are same
-			if n1.Compare( n2) == 0 {
+			if n1.Compare(n2) == 0 {
 
 				if mode == setUnion || mode == setIntersect {
 					vals = append(vals, n1.Key)
@@ -88,8 +88,8 @@ func set_operation(n1, n2 *Node, mode int) []interface{} {
 	return vals
 }
 
-//Empties all stack values.
-func empty_other_stack(s1, s2 *stack.Stack, vals []interface{}) []interface{} {
+// Empties all stack values.
+func empty_other_stack(s1, s2 *stack.Stack[*Node], vals []interface{}) []interface{} {
 	for s1.IsEmpty() && Not(s2.IsEmpty()) {
 		all_node_right_vals(s2, &vals)
 	}
@@ -100,11 +100,11 @@ func empty_other_stack(s1, s2 *stack.Stack, vals []interface{}) []interface{} {
 	return vals
 }
 
-//Gets all right branches
-func all_node_right_vals(s *stack.Stack, vals *[]interface{}) {
+// Gets all right branches
+func all_node_right_vals(s *stack.Stack[*Node], vals *[]interface{}) {
 	var n, nL *Node
 	for Not(s.IsEmpty()) {
-		n = s.Pop().(*Node)
+		n = s.Pop()
 		//prevent going left
 		nL, n.Left = n.Left, nil
 		InOrder(n, func(n *Node) bool {

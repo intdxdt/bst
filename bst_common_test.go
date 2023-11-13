@@ -1,9 +1,9 @@
 package bst
 
 import (
-	"testing"
-	"github.com/intdxdt/cmp"
 	"github.com/franela/goblin"
+	"github.com/intdxdt/cmp"
+	"testing"
 )
 
 func TestBSTUtil(t *testing.T) {

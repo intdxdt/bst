@@ -1,9 +1,9 @@
 package bst
 
 import (
-	"testing"
-	"github.com/intdxdt/cmp"
 	"github.com/franela/goblin"
+	"github.com/intdxdt/cmp"
+	"testing"
 )
 
 func TestBSTNode(t *testing.T) {
@@ -46,13 +46,13 @@ func TestBSTNode(t *testing.T) {
 		Ptr(node2, node4, right)
 		Ptr(node1, node0, left)
 		/**
-			   1
-			   / \
-			   0  2
-			   /\ /\
-				4
-				/\
-		 */
+		   1
+		   / \
+		   0  2
+		   /\ /\
+			4
+			/\
+		*/
 		//--------------------------------------
 		g.Assert(node2.Parent == node1).IsTrue() // 2s parent is 1
 		g.Assert(node4.Parent == node2).IsTrue() // 4s parent is 1
